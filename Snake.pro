@@ -13,8 +13,10 @@ TEMPLATE = app
 
 
 SOURCES = main.cpp \
-    window.cpp
+    window.cpp \
+    snake.cpp
 
-HEADERS  = window.h
+HEADERS  = window.h \
+    snake.h
 
 FORMS    += window.ui
