@@ -6,6 +6,7 @@ Snake::Snake(QPoint initial)
     this->currentLoc = initial;
     this->currentTrav = 0;
     this->path.append(initial);
+    this->color.setRgb(qrand()%200,qrand()%200,qrand()%200);
 }
 void Snake::updateSnake(){
     switch (currentDir) {
@@ -25,13 +26,13 @@ void Snake::updateSnake(){
         return;
     }
 
-    if(++currentTrav % 10 == 0){
+    if(++currentTrav % 20 == 0){
         path.append(currentLoc);
-        int cpDir = currentDir;
-        while(cpDir == currentDir) {
+        int temp = currentDir;
+        while(temp == currentDir || currentDir == temp-2 || currentDir == temp+2)
             currentDir = getRandDir();
-        }
     }
+
 }
 
 QList<QPoint> Snake::getPath() {
@@ -40,6 +41,10 @@ QList<QPoint> Snake::getPath() {
     return currPath;
 }
 
+QColor Snake::getColor(){
+    return this->color;
+}
+
 int Snake::getRandDir(){
-    return qrand () % 4;
+   return qrand () % 4;
 }

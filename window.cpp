@@ -23,10 +23,12 @@ void Window::paintEvent(QPaintEvent *) {
     QPainter painter(this);
     QPen pen;
     pen.setWidth(2);
-    painter.setPen(pen);
+
 
     for(int i=0; i<snakes.length(); i++) {
         snakes[i]->updateSnake();
+        pen.setColor(snakes[i]->getColor());
+        painter.setPen(pen);
         QList<QPoint> path = snakes[i]->getPath();
         QList<QPoint>::Iterator nextPt = path.begin();
         for(nextPt;;) {
